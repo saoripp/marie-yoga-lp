@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ヨガを『教える』から『経営する』へ | MARIE YOGA CONSULTING</title>
+  <meta name="description" content="ヨガスタジオ専門の経営コンサルティング。収益・人材・仕組みを整え、安定した成長をサポート。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ===== リセット & 基本 ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: #FAF7F3;
+      color: #333;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== カラー変数 ===== */
+    :root {
+      --base: #FAF7F3;
+      --section: #F0E4D3;
+      --accent: #DCC5B2;
+      --cta: #D9A299;
+      --heading: #4A3728;
+      --body: #666666;
+      --note: #999999;
+      --white: #ffffff;
+    }
+
+    /* ===== ヘッダー（固定） ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250,247,243,0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+    }
+    .header-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      color: var(--heading);
+      font-weight: 600;
+    }
+    .header-cta {
+      background: var(--cta);
+      color: var(--white);
+      padding: 9px 22px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .header-cta:hover { opacity: 0.85; }
+
+    /* ===== コンテナ ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .container--narrow { max-width: 760px; }
+    .container--mid { max-width: 900px; }
+
+    /* ===== ボタン ===== */
+    .btn {
+      display: inline-block;
+      background: var(--cta);
+      color: var(--white);
+      padding: 18px 44px;
+      border-radius: 4px;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn--full { display: block; width: 100%; }
+    .btn--lg { padding: 22px 48px; font-size: 18px; }
+
+    /* ===== デバイダー ===== */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      margin: 0 auto 28px;
+      border-radius: 2px;
+    }
+
+    /* ===== セクション共通 ===== */
+    section { padding: 96px 0; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--cta);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.45;
+      margin-bottom: 20px;
+    }
+    .section-body {
+      font-size: 16px;
+      color: var(--body);
+      line-height: 2.1;
+    }
+
+    /* ================================================
+       01 HERO
+    ================================================ */
+    #hero {
+      padding: 0;
+      min-height: 100svh;
+      background: var(--base);
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      min-height: calc(100svh - 60px);
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .hero-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--cta);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .hero-title {
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.3;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--cta);
+    }
+    .hero-sub {
+      font-size: clamp(14px, 1.8vw, 17px);
+      color: var(--body);
+      line-height: 2.0;
+      margin-bottom: 40px;
+    }
+    .hero-note {
+      font-size: 12px;
+      color: var(--note);
+      margin-top: 14px;
+    }
+    .hero-image {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image-placeholder {
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, var(--section) 0%, var(--accent) 100%);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image-placeholder::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -20%;
+      width: 70%; height: 70%;
+      background: rgba(217,162,153,0.25);
+      border-radius: 50%;
+    }
+    .hero-image-placeholder .img-icon {
+      font-size: 56px;
+      opacity: 0.6;
+    }
+    .hero-image-placeholder .img-label {
+      font-size: 13px;
+      color: var(--heading);
+      opacity: 0.7;
+      text-align: center;
+      padding: 0 20px;
+      font-weight: 500;
+    }
+    .hero-image-placeholder .img-sub {
+      font-size: 11px;
+      color: var(--body);
+      opacity: 0.8;
+      text-align: center;
+    }
+
+    /* ================================================
+       02 悩み
+    ================================================ */
+    #problems {
+      background: var(--section);
+    }
+    #problems .container { text-align: center; }
+    .problems-lead {
+      font-size: clamp(20px, 2.8vw, 28px);
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 16px;
+    }
+    .problems-sub {
+      font-size: 15px;
+      color: var(--body);
+      margin-bottom: 56px;
+    }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: left;
+    }
+    .problem-card {
+      background: var(--base);
+      border-radius: 10px;
+      padding: 28px 24px;
+      border: 1px solid rgba(220,197,178,0.4);
+      transition: box-shadow 0.2s;
+    }
+    .problem-card:hover { box-shadow: 0 6px 24px rgba(74,55,40,0.08); }
+    .problem-icon {
+      font-size: 36px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .problem-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 8px;
+    }
+    .problem-text {
+      font-size: 13px;
+      color: var(--body);
+      line-height: 1.8;
+    }
+
+    /* ================================================
+       03 理念
+    ================================================ */
+    #vision {
+      background: var(--base);
+      text-align: center;
+    }
+    .vision-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.4vw, 24px);
+      font-style: italic;
+      color: var(--body);
+      line-height: 2.0;
+      margin-bottom: 32px;
+    }
+    .vision-message {
+      font-size: clamp(15px, 1.8vw, 17px);
+      color: var(--body);
+      line-height: 2.4;
+      margin-bottom: 32px;
+    }
+    .vision-sign {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--cta);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    /* ================================================
+       04 サービス
+    ================================================ */
+    #services {
+      background: var(--section);
+      text-align: center;
+    }
+    .services-lead {
+      font-size: clamp(18px, 2.2vw, 22px);
+      color: var(--heading);
+      margin-bottom: 56px;
+      font-weight: 700;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .service-card {
+      background: var(--base);
+      border-radius: 10px;
+      padding: 28px 16px;
+      border: 1px solid rgba(220,197,178,0.4);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: 0 6px 24px rgba(74,55,40,0.08);
+      transform: translateY(-2px);
+    }
+    .service-icon {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .service-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 10px;
+    }
+    .service-text {
+      font-size: 12px;
+      color: var(--body);
+      line-height: 1.8;
+    }
+
+    /* ================================================
+       05 料金
+    ================================================ */
+    #pricing {
+      background: var(--base);
+      text-align: center;
+    }
+    .pricing-card {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 2px solid var(--accent);
+      border-radius: 14px;
+      padding: 48px 40px;
+      box-shadow: 0 4px 32px rgba(74,55,40,0.07);
+    }
+    .pricing-plan {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--cta);
+      margin-bottom: 12px;
+    }
+    .pricing-amount {
+      font-size: clamp(44px, 6vw, 60px);
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .pricing-unit {
+      font-size: 18px;
+      color: var(--body);
+      margin-bottom: 32px;
+    }
+    .pricing-list {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .pricing-list li {
+      font-size: 15px;
+      color: var(--body);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(220,197,178,0.4);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.7;
+    }
+    .pricing-list li:last-child { border-bottom: none; }
+    .check {
+      color: var(--cta);
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pricing-note {
+      font-size: 12px;
+      color: var(--note);
+      margin-top: 20px;
+      line-height: 1.9;
+    }
+
+    /* ================================================
+       06 プロフィール
+    ================================================ */
+    #profile {
+      background: var(--section);
+    }
+    .profile-inner {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+    .profile-photo {
+      flex-shrink: 0;
+      width: 340px;
+    }
+    .profile-photo-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, var(--accent) 0%, var(--base) 100%);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .profile-photo-wrap::before {
+      content: '';
+      position: absolute;
+      bottom: -20%; left: -20%;
+      width: 80%; height: 80%;
+      background: rgba(217,162,153,0.2);
+      border-radius: 50%;
+    }
+    .profile-photo-wrap .img-icon { font-size: 52px; opacity: 0.5; }
+    .profile-photo-wrap .img-label {
+      font-size: 12px; color: var(--heading); opacity: 0.7;
+      text-align: center; padding: 0 20px;
+    }
+    .profile-content { flex: 1; min-width: 0; }
+    .profile-en-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 600;
+      color: var(--cta);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .profile-ja-name {
+      font-size: 14px;
+      color: var(--body);
+      margin-bottom: 20px;
+    }
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .profile-tag {
+      background: var(--accent);
+      color: var(--heading);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .profile-text {
+      font-size: 15px;
+      color: var(--body);
+      line-height: 2.1;
+    }
+    .profile-quote {
+      margin-top: 20px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--cta);
+      background: rgba(250,247,243,0.8);
+      border-radius: 0 8px 8px 0;
+    }
+    .profile-quote p {
+      font-size: 14px;
+      color: var(--heading);
+      line-height: 1.9;
+      font-style: italic;
+    }
+
+    /* ================================================
+       07 FAQ
+    ================================================ */
+    #faq {
+      background: var(--base);
+    }
+    #faq .container--narrow { text-align: left; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--accent);
+    }
+    .faq-q {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 24px 0;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+    .faq-q-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cta);
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+    .faq-q-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .faq-toggle {
+      flex-shrink: 0;
+      font-size: 20px;
+      color: var(--accent);
+      transition: transform 0.2s;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); color: var(--cta); }
+    .faq-a {
+      display: none;
+      padding: 0 0 24px 36px;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-right: 10px;
+    }
+    .faq-a-text {
+      font-size: 15px;
+      color: var(--body);
+      line-height: 2.0;
+      display: inline;
+    }
+
+    /* ================================================
+       08 最終CTA
+    ================================================ */
+    #final-cta {
+      background: var(--section);
+      text-align: center;
+    }
+    .final-cta-title {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .final-cta-body {
+      font-size: clamp(14px, 1.8vw, 16px);
+      color: var(--body);
+      line-height: 2.2;
+      margin-bottom: 44px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta-btn-wrap {
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .final-cta-note {
+      font-size: 12px;
+      color: var(--note);
+      margin-top: 18px;
+      line-height: 2.0;
+    }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+    footer {
+      background: var(--heading);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 12px;
+      line-height: 2.0;
+    }
+    footer a { color: rgba(255,255,255,0.5); }
+
+    /* ================================================
+       画像アップロード案内バナー
+    ================================================ */
+    .photo-banner {
+      background: rgba(217,162,153,0.15);
+      border: 1.5px dashed var(--cta);
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--heading);
+      line-height: 1.8;
+    }
+    .photo-banner strong { color: var(--cta); }
+
+    /* ================================================
+       RESPONSIVE — スマホ（767px以下）
+    ================================================ */
+    @media (max-width: 767px) {
+      header { padding: 0 16px; }
+      .header-logo { font-size: 14px; }
+      .header-cta { padding: 8px 14px; font-size: 12px; }
+
+      section { padding: 64px 0; }
+      .container { padding: 0 20px; }
+
+      /* Hero */
+      .hero-inner {
+        flex-direction: column;
+        padding: 40px 20px 60px;
+        gap: 36px;
+        min-height: calc(100svh - 60px);
+        align-items: flex-start;
+      }
+      .hero-image { width: 100%; order: -1; }
+      .hero-image-placeholder {
+        aspect-ratio: 4/3;
+        max-width: 100%;
+        border-radius: 12px;
+      }
+      .hero-text { width: 100%; }
+      .btn { padding: 16px 28px; font-size: 16px; }
+      .btn--lg { padding: 18px 28px; font-size: 17px; }
+
+      /* 悩みカード */
+      .problems-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      /* サービス */
+      .services-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      /* プロフィール */
+      .profile-inner { flex-direction: column; gap: 32px; }
+      .profile-photo { width: 100%; max-width: 280px; margin: 0 auto; }
+      .profile-photo-wrap { aspect-ratio: 1/1; }
+
+      /* 料金 */
+      .pricing-card { padding: 36px 24px; }
+      .pricing-amount { font-size: 44px; }
+
+      /* 最終CTA */
+      .final-cta-btn-wrap { max-width: 100%; }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .problems-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .profile-photo { width: 260px; }
+      .hero-inner { gap: 40px; padding: 60px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-logo">MARIE YOGA CONSULTING</div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNmIKb4xoeY7W5IEtPoPiEfOiACE-phUNmEpacOKfJ-F_oHw/viewform" target="_blank" rel="noopener" class="header-cta">無料相談はこちら</a>
+  </header>
+
+  <!-- ===== 01 HERO ===== -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-tag">AERIAL YOGA × BUSINESS CONSULTING</span>
+        <h1 class="hero-title">
+          ヨガを<em>『教える』</em>から<br>
+          <em>『経営する』</em>へ
+        </h1>
+        <p class="hero-sub">
+          ヨガスタジオ専門の経営コンサルティング。<br>
+          収益・人材・仕組みを整え、<br>
+          安定した成長をサポートします。
+        </p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNmIKb4xoeY7W5IEtPoPiEfOiACE-phUNmEpacOKfJ-F_oHw/viewform" target="_blank" rel="noopener" class="btn">
+          無料相談はこちら &nbsp;→
+        </a>
+        <p class="hero-note">※ オンライン対応 / 毎月限定5名</p>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-placeholder">
+          <span class="img-icon">🧘</span>
+          <span class="img-label">ここにエアリアルヨガの<br>写真を入れてください</span>
+          <span class="img-sub">推奨：縦長・動きのあるポーズ写真</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 悩み ===== -->
+  <section id="problems">
+    <div class="container container--mid">
+      <div class="section-label">PROBLEMS</div>
+      <h2 class="problems-lead">こんなお悩み、ありませんか？</h2>
+      <p class="problems-sub">ヨガが好きなのに、経営のことで頭がいっぱいになっていませんか。</p>
+      <div class="problems-grid">
+        <div class="problem-card">
+          <span class="problem-icon">📉</span>
+          <div class="problem-title">売上が安定しない</div>
+          <div class="problem-text">毎月の収入にムラがあって、先が見えない。いつになったら安定するんだろう…</div>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">📱</span>
+          <div class="problem-title">SNS集客が難しい</div>
+          <div class="problem-text">毎日発信しているのに、新規の生徒さんがなかなか増えない。何が足りないの？</div>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">💰</span>
+          <div class="problem-title">収入が不安定</div>
+          <div class="problem-text">好きなことで生きているのに、お金の不安が頭から離れない。</div>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">🔢</span>
+          <div class="problem-title">数字が苦手</div>
+          <div class="problem-text">売上とか経費とか、経営の数字を見るのが怖くて、ついつい後回しにしてしまう。</div>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">👥</span>
+          <div class="problem-title">スタッフ管理に悩む</div>
+          <div class="problem-text">人が増えるほど、関係づくりやマネジメントで消耗してしまう。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 理念 ===== -->
+  <section id="vision">
+    <div class="container container--narrow" style="text-align:center;">
+      <div class="divider"></div>
+      <div class="section-label">OUR VISION</div>
+      <p class="vision-quote">
+        「ヨガが好きで、インストラクターになった。<br>
+        でも、好きなことだけでは続けられない現実があった。」
+      </p>
+      <p class="vision-message">
+        女性インストラクターが、自立して安心してヨガを続けられる社会をつくりたい。<br>
+        そのために、経営の知識とヨガへの愛情を掛け合わせたサポートを届けています。<br><br>
+        あなたのヨガを、長く・安定して・誇りを持って続けるために。
+      </p>
+      <p class="vision-sign">— MARIE</p>
+    </div>
+  </section>
+
+  <!-- ===== 04 サービス ===== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label" style="text-align:center;">SERVICES</div>
+      <h2 class="section-title" style="text-align:center;" class="services-lead">
+        あなたのヨガを「続けられる経営」に変える、<br>5つのサポート
+      </h2>
+      <p style="text-align:center; font-size:15px; color:var(--body); margin-bottom:52px; line-height:1.8;">悩みの種類に合わせて、必要なサポートを組み合わせてご提供します。</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">💹</span>
+          <div class="service-name">収益改善</div>
+          <div class="service-text">売上の仕組みを分解し、安定した収益モデルをつくります</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🎯</span>
+          <div class="service-name">集客戦略</div>
+          <div class="service-text">SNS・口コミ・SEOを組み合わせた、無理のない集客設計</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🤝</span>
+          <div class="service-name">人材活用</div>
+          <div class="service-text">スタッフとの関係づくり・採用・教育の仕組みを整えます</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📊</span>
+          <div class="service-name">資金管理</div>
+          <div class="service-text">数字が苦手でも大丈夫。キャッシュフローの見える化をサポート</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🎓</span>
+          <div class="service-name">教育企画</div>
+          <div class="service-text">生徒が続けたくなるレッスン設計・プログラム開発をご支援</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 05 料金 ===== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-label" style="text-align:center;">PRICING</div>
+      <h2 class="section-title" style="text-align:center; margin-bottom:48px;">透明性のある料金設定</h2>
+      <div class="pricing-card">
+        <div class="pricing-plan">月額コンサルティングプラン</div>
+        <div class="pricing-amount">¥50,000</div>
+        <div class="pricing-unit">〜 / 月（税別）</div>
+        <ul class="pricing-list">
+          <li><span class="check">✓</span> 月2回のオンライン個別セッション（各60分）</li>
+          <li><span class="check">✓</span> チャットサポート（平日対応）</li>
+          <li><span class="check">✓</span> 経営数値レポートのレビュー</li>
+          <li><span class="check">✓</span> 集客・SNS戦略のフィードバック</li>
+          <li><span class="check">✓</span> 初月は無料相談（30分）からスタート</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNmIKb4xoeY7W5IEtPoPiEfOiACE-phUNmEpacOKfJ-F_oHw/viewform" target="_blank" rel="noopener" class="btn btn--full">
+          無料相談で詳しく聞く &nbsp;→
+        </a>
+        <p class="pricing-note">
+          ※ 料金はスタジオの規模・ご相談内容により変動します。<br>
+          ※ まずは無料相談でお気軽にご確認ください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 プロフィール ===== -->
+  <section id="profile">
+    <div class="container">
+      <div class="section-label">PROFILE</div>
+      <div class="profile-inner">
+        <div class="profile-photo">
+          <div class="photo-banner">
+            <strong>📸 写真を入れてください</strong><br>
+            笑顔・清潔感のある背景の縦長写真がおすすめ
+          </div>
+          <div class="profile-photo-wrap">
+            <span class="img-icon">🧘‍♀️</span>
+            <span class="img-label">MARIEさんの<br>プロフィール写真</span>
+          </div>
+        </div>
+        <div class="profile-content">
+          <div class="profile-en-name">MARIE</div>
+          <div class="profile-ja-name">マリエ</div>
+          <div class="profile-tags">
+            <span class="profile-tag">エアリアルヨガ認定インストラクター</span>
+            <span class="profile-tag">経営コンサルタント</span>
+          </div>
+          <p class="profile-text">
+            ヨガインストラクターとして活動しながら、経営の壁にぶつかった経験から「ヨガと経営の両立」をテーマに独立。<br><br>
+            エアリアルヨガの指導経験と、ビジネスコンサルティングの知識を掛け合わせた独自のアプローチで、全国の女性インストラクター・スタジオオーナーを支援しています。
+          </p>
+          <div class="profile-quote">
+            <p>「ヨガを好きでい続けるために、経営を学んでほしい。<br>その思いで、一人ひとりのスタジオに寄り添ったサポートを提供しています。」</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 07 FAQ ===== -->
+  <section id="faq">
+    <div class="container container--narrow">
+      <div class="section-label" style="text-align:center;">FAQ</div>
+      <h2 class="section-title" style="text-align:center; margin-bottom:48px;">よくある質問</h2>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-q-text">経営の知識がなくても相談できますか？</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <span class="faq-a-mark">A</span>
+            <span class="faq-a-text">はい、まったく問題ありません。数字が苦手な方、初めて経営に向き合う方をメインに支援しています。専門用語を使わず、わかりやすい言葉でご説明します。</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-q-text">オンラインのみの対応ですか？</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <span class="faq-a-mark">A</span>
+            <span class="faq-a-text">はい、基本はオンライン（Zoom）での対応です。全国どこからでもご相談いただけます。</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-q-text">個人スタジオでも相談できますか？</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <span class="faq-a-mark">A</span>
+            <span class="faq-a-text">はい、個人運営から小規模スタジオまで対応しています。規模より「今の悩みに向き合いたい気持ち」を重視しています。</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-q-text">無料相談でどんなことを話せますか？</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <span class="faq-a-mark">A</span>
+            <span class="faq-a-text">現状のお悩み・課題を聞かせていただき、方向性をご一緒に確認します。無理な勧誘は一切ありません。「相談してみてよかった」と思えるような時間にします。</span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-mark">Q</span>
+            <span class="faq-q-text">契約期間はどのくらいですか？</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-a">
+            <span class="faq-a-mark">A</span>
+            <span class="faq-a-text">最低契約期間は3か月です。状況に応じて延長・変更も可能です。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 08 最終CTA ===== -->
+  <section id="final-cta">
+    <div class="container container--narrow" style="text-align:center;">
+      <div class="divider"></div>
+      <h2 class="final-cta-title">
+        あなたのヨガスタジオを、<br>
+        次のステージへ。
+      </h2>
+      <p class="final-cta-body">
+        まずは30分、無料でお話しましょう。<br>
+        相談内容はどんな小さなことでも構いません。<br>
+        経営のことが「わかる」だけで、毎日がラクになります。
+      </p>
+      <div class="final-cta-btn-wrap">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNmIKb4xoeY7W5IEtPoPiEfOiACE-phUNmEpacOKfJ-F_oHw/viewform" target="_blank" rel="noopener" class="btn btn--full btn--lg">
+          無料相談を申し込む（完全無料）
+        </a>
+        <p class="final-cta-note">
+          ※ しつこい営業・勧誘は一切行いません<br>
+          ※ 毎月 5 名様限定のご案内です
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>MARIE YOGA CONSULTING</p>
+    <p style="margin-top:8px;">© 2026 MARIE. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== FAQ アコーディオン JS ===== -->
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // 全部閉じる
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+      // クリックしたものが閉じていたら開く
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
